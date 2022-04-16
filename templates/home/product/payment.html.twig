@@ -1,0 +1,226 @@
+{% extends 'base.html.twig' %}
+{% block body%}
+<!-- start #header -->
+        <header id="header">
+            <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
+                <p class="font-rale font-size-12 text-black-50 m-0">Jordan Calderon 430-985 Eleifend St. Duluth Washington 92611 (427) 930-5255</p>
+                <div class="font-rale font-size-14">
+                    <a href="#" class="px-3 border-right border-left text-dark">Login</a>
+                    <a href="#" class="px-3 border-right text-dark">Whishlist (0)</a>
+                </div>
+            </div>
+
+            <!-- Primary Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
+                <a class="navbar-brand" href="#">Mobile Shopee</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav m-auto font-rubik">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">On Sale</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Category</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Products <i class="fas fa-chevron-down"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Category <i class="fas fa-chevron-down"></i></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Coming Soon</a>
+                      </li>
+                  </ul>
+                  <form action="#" class="font-size-14 font-rale">
+                      <a href="#" class="py-2 rounded-pill color-primary-bg">
+                        <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="px-3 py-2 rounded-pill text-dark bg-light">0</span>
+                      </a>
+                  </form>
+                </div>
+              </nav>
+               <!-- !Primary Navigation -->
+
+        </header>
+    <!-- !start #header -->
+
+    <!-- start #main-site -->
+        <main id="main-site">
+
+        <!--   product  -->
+            <section id="product" class="py-3">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="../../uploads/image/{{sanpham.hinhanh}}" alt="product" class="img-fluid img-product">
+                            <div class="form-row pt-4 font-size-16 font-baloo">
+                                <div class="col">
+                                    <p>{{sanpham.chitiet}}</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        {{ form_start(form,{
+                          'attr':{
+                            'class':'payment-form',
+                          }
+                        }) }}
+                        <div class=" col-sm-10 py-5">
+                          <h2 class="infor-customer">customer information</h2>
+                          <form  action="#"   method="post">
+                          
+                            <div class="form-group row">
+                              <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputname" placeholder="name">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Address</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                            </div>
+                            
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                  <input type="Email" class="form-control" id="inputAddress" placeholder="Email">
+                            </div>
+                            
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Phone</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" id="inputphone" placeholder="number phone">
+                                </div>
+                           
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">product</label>
+                                <div class="col-sm-10">
+                                  {{ form_widget(form.tensp,{
+                                    'attr':{
+                                      'class':'form-control',
+                                      'placeholder': 'Task name'
+                                    }
+                                  }) }}
+                              
+                                </div>
+                           
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Price</label>
+                                <div class="col-sm-10">
+                                  {{ form_widget(form.gia,{
+                                    'attr':{
+                                      'class':'form-control',
+                                      'placeholder': 'Task name'
+                                    }
+                                  }) }}
+                                </div>
+                           
+                              </div>
+                            
+                              
+                              <button type="submit" class="btn payment btn-warning font-size-12">Proceed to Buy</button>
+                          </form>
+
+                        </div>
+                        {{ form_end(form) }}
+                      
+                    </div>
+                </div>
+            </section>
+        <!--   !product  -->
+
+
+          <!-- Top Sale -->
+          <section id="top-sale">
+            <div class="container py-5">
+              <h4 class="font-rubik font-size-20">Top Sale</h4>
+              <hr>
+              <!-- owl carousel -->
+                <div class="owl-carousel owl-theme">
+                {%for saler in products%}
+                  <div class="item py-2">
+                
+                    <div class="product font-rale">
+                      <a href="#"><img src="../../uploads/image/{{saler.hinhanh}}" alt="product1" class="img-fluid"></a>
+                      <div class="text-center">
+                        <h6>Samsung Galaxy 10</h6>
+                        <div class="rating text-warning font-size-12">
+                          <span><i class="fas fa-star"></i></span>
+                          <span><i class="fas fa-star"></i></span>
+                          <span><i class="fas fa-star"></i></span>
+                          <span><i class="fas fa-star"></i></span>
+                          <span><i class="far fa-star"></i></span>
+                        </div>
+                        <div class="price py-2">
+                          <span>$152</span>
+                        </div>
+                        <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                      </div>
+                    </div>
+                  </div>
+               {%endfor%}
+                </div>
+              <!-- !owl carousel -->
+            </div>
+          </section>
+        <!-- !Top Sale -->
+
+        </main>
+    <!-- !start #main-site -->
+
+    <!-- start #footer -->
+        <footer id="footer" class="bg-dark text-white py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-12">
+                <h4 class="font-rubik font-size-20">Mobile Shopee</h4>
+                <p class="font-size-14 font-rale text-white-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, deserunt.</p>
+              </div>
+              <div class="col-lg-4 col-12">
+                <h4 class="font-rubik font-size-20">Newslatter</h4>
+                <form class="form-row">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Email *">
+                  </div>
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-lg-2 col-12">
+                <h4 class="font-rubik font-size-20">Information</h4>
+                <div class="d-flex flex-column flex-wrap">
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">About Us</a>
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Delivery Information</a>
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Privacy Policy</a>
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Terms & Conditions</a>
+                </div>
+              </div>
+              <div class="col-lg-2 col-12">
+                <h4 class="font-rubik font-size-20">Account</h4>
+                <div class="d-flex flex-column flex-wrap">
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">My Account</a>
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Order History</a>
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Wish List</a>
+                  <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Newslatters</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <div class="copyright text-center bg-dark text-white py-2">
+          <p class="font-rale font-size-14">&copy; Copyrights 2020. Desing By <a href="#" class="color-second">Daily Tuition</a></p>
+        </div>
+    <!-- !start #footer -->
+    {% endblock%}

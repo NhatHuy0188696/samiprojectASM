@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body%}
+{{ form_start(form) }}
+
+<div class="content-right col-md-12">
+  <form class="form-add--product">
+    <div class="form-row form-input">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">de qui</label>
+        {{ form_widget(form.dequi,{
+          'attr':{
+            'class':'form-control',
+            'placeholder': ' dequi'
+          }
+        }) }}
+    
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Mã danh mục</label>
+        {{form_widget(form.madm,{
+          'attr':{
+            'class':'form-control','placeholder':'Nhập mã danh mục'
+          }
+        })}}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Tên Danh mục</label>
+        {{form_widget(form.tendm,{
+          'attr':{
+            'class':'form-control','placeholder':'Nhập Tên Danh mục'
+          }
+        })}}
+      </div>
+      <input type="submit" name="add" class="btn btn-primary" value="Add">
+    </div
+  
+    </form>
+  </div
+      
+  
+  
+  </form>
+  <div>
+
+    {{ form_end(form) }}
+{% endblock%}
